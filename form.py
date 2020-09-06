@@ -5,10 +5,10 @@ class newbookform(forms.Form):
     price=forms.FloatField(label='price')
     author=forms.CharField(label='author')#length will be taken automatically
     publisher=forms.CharField(label='publisher')
-    pdf=forms.FileField(
+    '''pdf=forms.FileField(
         label='pdf',
         help_text='max. 42 megabytes'
-    )
+    )'''
 
 class searchform(forms.Form):
     title=forms.CharField(label='title',max_length=100)
