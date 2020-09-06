@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>New book form</title>
+    <link rel="stylesheet" href="{%static 'css/brm.css'%}"
+</head>
+<body>
+<div id="header">
+    <h1>Book Record Mnagement</h1>
+    <div id="nav">
+        <a href="/brm/view_books">view books</a>
+        <a href="/brm/new_book">new books</a>
+        <a href="/brm/search_book">search book</a>
+        <a href="/brm/logout">Logout</a>
+    </div>
+    <div id="hello">Hello,{{request.session.username}}</div>
+</div>
+<div id='main'>
+<h2>search book</h2>
+    <form action="/brm/search" method="post">
+        {%csrf_token%}
+        {{form}}
+        <input type="submit" value="search">
+    </form>
+    {%if books%}
+    <table>
+        <thead>
+        <th>book title</th>
+        <th>price</th>
+        <th>author</th>
+        <th>publisher</th>
+        </thead>
+        {%for book in books%}
+        <tr>
+            <td>{{book.title}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publisher}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    {%endif%}
+</div>
+</body>
+</html>
